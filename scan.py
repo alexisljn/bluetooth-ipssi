@@ -1,5 +1,12 @@
+if __name__ == "__main__":
+    import mysql_communicator
+
 import bluetooth, json
 from blscan import get_nearby_devices, get_rssi_for_devices
+
+db = mysql_communicator.connector()
+
+db.insert_scan('66:55:44:33:22:11', 'ok', -4, 'SCANNER2')
 
 print("Performing inquiry ... ", end='', flush=True)
 
