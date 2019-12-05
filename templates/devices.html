@@ -12,8 +12,8 @@
   <body>
 	{% for d in devices %}
 	<div id="device-{{loop.index}}" class="device">
-	  <div>{{d.id}}</div>
-	  <div>{{d.name}}</div>
+	  <div>{{d.mac_address}}</div>
+	  <div>{{d.device_name}}</div>
 	  <div>{{d.rssi}}</div>
 	</div>
 	{% endfor %}

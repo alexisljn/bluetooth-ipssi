@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for
 import json
+import mysql_communicator
 
 app = Flask(__name__)
 
@@ -9,7 +10,8 @@ def home():
 
 @app.route('/devices', methods=['GET'])
 def devices():
-  devices = parse_from_json()
+  db = mysql_communicator.connector()
+  devices = db.get_latest_scan_for_each_mac_address()
   return render_template("devices.html", devices=devices)
 
 def parse_from_json():
