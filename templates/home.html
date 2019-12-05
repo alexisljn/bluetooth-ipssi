@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scann'r</title>
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #3498db;
+        }
+        h1 {
+            font-family: Patua One;
+            font-weight: 400;
+            font-size: 20vw;
+            color: #f8f8f8;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0;
+
+            animation-name: title-animation;
+            animation-timing-function: ease-out;
+            animation-duration: 0.5s;
+        }
+        #devices-button {
+            display: inline-block;
+            padding: 15px 25px;
+            border: 2px solid #f8f8f8;
+            color: #f8f8f8;
+            border-radius: 5px;
+            font-family: Patua One;
+            text-decoration: none;
+            font-size: 150%;
+
+            transition: color 0.2s ease, background-color 0.2s ease;
+
+            transform: scale(0.75);
+            opacity: 0;
+            animation-name: button-animation;
+            animation-timing-function: ease-out;
+            animation-duration: 0.5s;
+            animation-delay: 0.5s;
+            animation-fill-mode: forwards;
+        }
+        #devices-button:hover {
+            background-color: #f8f8f8;
+            color: #3498db;
+        }
+
+        @keyframes title-animation {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes button-animation {
+            from {
+                transform: scale(0.75);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Scann'r</h1>
+    <div style="text-align: center">
+        <a href="/devices" id="devices-button">View devices</a>
+    </div>
+</body>
+</html>

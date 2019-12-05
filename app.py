@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-  return 'Bienvenue !'
+  return render_template("home.html")
 
 @app.route('/devices', methods=['GET'])
 def devices():
