@@ -12,6 +12,8 @@ Scann'r is a project which goal is to display nearby bluetooth devices on a web 
 
 The project needs a MySQL/MariaDB database. Use the `scannr.sql` file to build the database structure, and configure the database authentication in the `mysql_communicator/__init__.py` file.
 
+You have to install dependencies with `pip install -r requirements.txt`.
+
 The code provides two simple scripts:
 
 - `scan.py`: scan devices and store them in a json file with their ids, names, and RSSI.
