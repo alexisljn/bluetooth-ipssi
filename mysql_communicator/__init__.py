@@ -21,7 +21,7 @@ class connector:
         self.commit()
 
     def get_latest_scan_for_each_mac_address(self):
-        sql = "select mac_address, device_name, rssi, scan_date from scan s where not exists (select 1 from scan s1 where s1.mac_address = s.mac_address and s1.scan_date > s.scan_date)"
+        sql = "select mac_address, device_name, rssi, scan_date from scan s where not exists (select 1 from scan s1 where s1.mac_address = s.mac_address and s1.scan_date > s.scan_date) order by scan_date desc"
         self.cursor.execute(sql)
         columns = [col[0] for col in self.cursor.description]
         rows = [dict(zip(columns, row)) for row in self.cursor.fetchall()]
