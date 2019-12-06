@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<title></title>
-	<style>
-	  .device {
-	    margin: 10px auto;
-	    border:1px solid black;
-	  }
-	</style>
-  </head>
-  <body>
-	{% for d in devices %}
-	<div id="device-{{loop.index}}" class="device">
-	  <div>{{d.mac_address}}</div>
-	  <div>{{d.device_name}}</div>
-	  <div>{{d.rssi}}</div>
-	</div>
-	{% endfor %}
-  </body>
+    <head>
+	    <title>Devices</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class="main-content">
+            <h1>Scann'r</h1>
+            <h2>Latest localization of each device</h2>
+            <p>Click on a device to see details</p>
+            {% for d in devices %}
+            <div id="device-{{ loop.index }}" class="device-container">
+                <a href="/devices/{{ d.mac_address }}">
+                    <div class="device">
+                        <div>{{ d.mac_address }} (<strong>{{ d.device_name }}</strong>)</div>
+                        <div>Last localization time: {{ d.scan_date }}</div>
+                            <div>Signal strength:
+                                {% if d.rssi is not none %}
+                                    {{ d.rssi }}
+                                {% else %}
+                                    <i>n/a</i>
+                                {% endif %}
+                            </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
 </html>

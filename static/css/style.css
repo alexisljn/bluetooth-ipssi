@@ -1,0 +1,42 @@
+body {
+    background-color: #3498db;
+    font-family: Lato, sans-serif;
+}
+
+.main-content {
+    background-color: #f8f8f8;
+    padding: 20px 40px;
+    max-width: 984px;
+    margin: auto;
+}
+
+h1 {
+    font-family: Patua One;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    font-size: 4em;
+    color: #3498db;
+}
+
+.device-container > a {
+    display: block;
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.device {
+    margin: 10px auto;
+    border: 1px solid #4e4e4e;
+    border-radius: 5px;
+    padding: 20px;
+
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.device:hover {
+    border-color: #3498db;
+    background-color: #3498db;
+    color: white;
+}
