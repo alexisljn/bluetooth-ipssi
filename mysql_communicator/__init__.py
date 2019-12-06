@@ -26,3 +26,20 @@ class connector:
         columns = [col[0] for col in self.cursor.description]
         rows = [dict(zip(columns, row)) for row in self.cursor.fetchall()]
         return rows
+
+    def get_names_of_mac_address(self, mac_address):
+        sql = "select distinct device_name from scan s where mac_address = %s"
+        values = (mac_address, )
+        self.cursor.execute(sql, values)
+        names = []
+        for name in self.cursor.fetchall():
+            names.append(name[0])
+        return names
+
+    def get_scans_of_mac_address(self, mac_address):
+        sql = "select id, device_name, scan_date, rssi, scanned_by_device from scan s where mac_address = %s order by scan_date desc"
+        values = (mac_address, )
+        self.cursor.execute(sql, values)
+        columns = [col[0] for col in self.cursor.description]
+        rows = [dict(zip(columns, row)) for row in self.cursor.fetchall()]
+        return rows
