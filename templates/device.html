@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <title>Details of {{ mac_address }}</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class="main-content">
+        <a href="/devices">Back to devices</a>
+            <h2>Details of device {{ mac_address }}</h2>
+            <p>Known device names:</p>
+            <ul>
+                {% for name in names %}
+                    <li>{{ name }}</li>
+                {% endfor %}
+            </ul>
+
+            <p>Scans history:</p>
+            <table>
+                <thead>
+                    <tr><th>Date</th><th>Scanner</th><th>Sig. strength</th><th>Device name</th></tr>
+                </thead>
+                <tbody>
+                    {% for scan in scans %}
+                        <tr><td>{{ scan.scan_date }}</td><td>{{ scan.scanned_by_device }}</td><td>{% if scan.rssi is none %} n/a {% else %} {{ scan.rssi }} {% endif %}</td><td>{{ scan.device_name }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </body>
+</html>

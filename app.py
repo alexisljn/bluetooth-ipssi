@@ -14,6 +14,16 @@ def devices():
   devices = db.get_latest_scan_for_each_mac_address()
   return render_template("devices.html", devices=devices)
 
+@app.route('/devices/<mac_address>', methods=['GET'])
+def device(mac_address):
+  db = mysql_communicator.connector()
+  scans = db.get_scans_of_mac_address(mac_address)
+  if not scans:
+    return render_template('device-not-found.html')
+
+  names = db.get_names_of_mac_address(mac_address)
+  return render_template("device.html", scans=scans, names=names, mac_address=mac_address)
+
 def parse_from_json():
   devices = []
   with open('./devices.json', 'r') as f:
